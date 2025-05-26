@@ -16,6 +16,7 @@ services:
 
   faostat_ingestor:
     build: ./faostat_ingestor
+    image: faostat_ingestor
     depends_on:
       - minio
     environment:
@@ -35,9 +36,11 @@ services:
       POSTGRES_PASSWORD: postgres
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   model_features:
     build: ./model_features
+    image: model_features
     depends_on:
       - postgres
     environment:

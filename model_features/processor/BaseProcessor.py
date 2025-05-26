@@ -25,6 +25,7 @@ class FAODataProcessor(ABC):
             df['Value']
             .astype(str)
             .str.replace('.', '', regex=False)
+            .replace({'None': None, 'nan': None, '': None})
             .astype(float)/1000000
         )
         self.df_filtered = df

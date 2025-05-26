@@ -34,17 +34,24 @@ def salvar_features(df):
     for _, row in df.iterrows():
         cursor.execute("""
             INSERT INTO features_soja (
-                area, year, production,
-                use_per_capita, use_per_area_of_cropland, agricultural_use,
-                temperature_change, investment_usd, rural_population,
-                producer_price
-            ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                area, year, area_harvested, production, yield,
+                agricultural_use, use_per_area_of_cropland, use_per_capita,
+                temperature_change, investment_usd, rural_population, producer_price
+            ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """, (
-            row.get("Area"), row.get("Year"), row.get("Production"),
-            row.get("Use per capita"), row.get("Use per area of cropland"), row.get("Agricultural Use"),
-            row.get("Temperature change"), row.get("Investment_USD"),
-            row.get("Rural population"), row.get("Producer Price (USD/tonne)")
-        ))
+        row.get("Area"),
+        row.get("Year"),
+        row.get("Area harvested"),
+        row.get("Production"),
+        row.get("Yield"),
+        row.get("Agricultural Use"),
+        row.get("Use per area of cropland"),
+        row.get("Use per capita"),
+        row.get("Temperature change"),
+        row.get("Investment_USD"),
+        row.get("Rural population"),
+        row.get("Producer Price (USD/tonne)")
+    ))
 
     conn.commit()
     cursor.close()

@@ -2,17 +2,23 @@
 -- e suas respectivas características, como área cultivada, ano, produção, uso per capita,
 -- uso por área de terras cultivadas, uso agrícola, mudança de temperatura, investimento em
 -- dólares, população rural e preço do produtor. 
+DROP TABLE IF EXISTS features_soja;
+
 CREATE TABLE IF NOT EXISTS features_soja (
     id SERIAL PRIMARY KEY,
-    area VARCHAR(100),
-    year INT,
-    production NUMERIC,
-    use_per_capita NUMERIC,
-    use_per_area_of_cropland NUMERIC,
-    agricultural_use NUMERIC,
-    temperature_change NUMERIC,
-    investment_usd NUMERIC,
-    rural_population NUMERIC,
-    producer_price NUMERIC,
+    area CHARACTER VARYING,
+    year CHARACTER VARYING,
+    area_harvested CHARACTER VARYING,
+    production CHARACTER VARYING,
+    yield CHARACTER VARYING,
+    agricultural_use CHARACTER VARYING,
+    use_per_area_of_cropland CHARACTER VARYING,
+    use_per_capita CHARACTER VARYING,
+    temperature_change CHARACTER VARYING,
+    investment_usd CHARACTER VARYING,
+    rural_population CHARACTER VARYING,
+    producer_price CHARACTER VARYING,
     data_execucao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
