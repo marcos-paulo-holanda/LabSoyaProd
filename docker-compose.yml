@@ -2,8 +2,8 @@ version: "3.9"
 
 services:
   minio:
-    image: minio/minio
     container_name: minio
+    image: minio/minio
     ports:
       - "9000:9000"
       - "9001:9001"
@@ -15,7 +15,10 @@ services:
       - minio_data:/data
 
   faostat_ingestor:
+    container_name: faostat_ingestor
     build: ./faostat_ingestor
+    env_file:
+      - .env
     image: faostat_ingestor
     depends_on:
       - minio
@@ -39,8 +42,27 @@ services:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   model_features:
+    container_name: model_features
     build: ./model_features
+    env_file:
+      - .env
     image: model_features
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_DB: faostat
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+  model_trainer:
+    build: ./model_trainer
+    env_file:
+      - .env
+    volumes:
+      - ./model_trainer/eda_outputs:/app/eda_outputs
+    container_name: model_trainer
+    image: model_trainer
     depends_on:
       - postgres
     environment:

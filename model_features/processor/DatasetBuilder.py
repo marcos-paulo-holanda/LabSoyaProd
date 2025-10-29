@@ -25,20 +25,7 @@ class DatasetBuilder:
         df = df.merge(self.df_price, on=["Area", "Year"], how="outer")
         self.df_final = df
 
-    def preencher_nulos(self):
-        print("🧼 Preenchendo valores ausentes com forward fill e backward fill...")
-        # separa colunas
-        id_cols = ["Area", "Year"]
-        df = self.df_final.copy()
-        df = df.sort_values(by=id_cols)
-        # separa numéricas
-        value_cols = [col for col in df.columns if col not in id_cols]
-        # aplica preenchimento por grupo
-        df[value_cols] = df.groupby("Area")[value_cols].transform(lambda group: group.ffill().bfill())
-        self.df_final = df
-
     def executar(self):
         self.carregar_dados()
         self.merge_dados()
-        self.preencher_nulos()
         return self.df_final

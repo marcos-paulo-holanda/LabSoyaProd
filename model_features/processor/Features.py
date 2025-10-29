@@ -1,9 +1,11 @@
 from processor.BaseProcessor import FAODataProcessor
+from datetime import datetime
 
 class SoyaProcessor(FAODataProcessor):
     """Classe para processar dados de produção de soja."""
     def filtrar_df(self, df):
-        return df[df['Item'] == 'Soya beans']
+        df = df[df['Item'] == 'Soya beans']
+        return df
 
 class FertilizersProcessor(FAODataProcessor):
     """Classe para processar dados de fertilizantes."""
@@ -13,7 +15,8 @@ class FertilizersProcessor(FAODataProcessor):
             'Use per area of cropland',
             'Use per capita'
         ]
-        return df[df['Element'].isin(filtros)]
+        df = df[df['Element'].isin(filtros)]
+        return df
 
 class ETProcessor(FAODataProcessor):
     """Classe para processar dados de temperatura."""
@@ -37,7 +40,8 @@ class OAPopulationProcessor(FAODataProcessor):
     """Classe para processar dados de população."""
     def filtrar_df(self, df):
         # Filtra os dados para incluir apenas os elementos de população rural
-        return df[df['Element'] == 'Rural population']
+        df = df[df['Element'] == 'Rural population']
+        return df
 
 class PricesProcessor(FAODataProcessor):
     """Classe para processar dados de preços."""

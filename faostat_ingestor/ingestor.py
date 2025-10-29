@@ -4,8 +4,12 @@ import zipfile
 import pandas as pd
 import boto3
 from io import BytesIO
+from dotenv import load_dotenv
 
+load_dotenv()
 
+"""FAOSTAT Data Ingestor. Esse script baixa dados do FAOSTAT, processa e envia para um bucket MinIO.
+"""
 class FAOSTATIngestor:
     def __init__(self):
         self.urls = {
@@ -17,10 +21,10 @@ class FAOSTATIngestor:
             'pp':  'https://bulks-faostat.fao.org/production/Prices_E_All_Data_(Normalized).zip'
         }
 
-        self.minio_endpoint = os.getenv('MINIO_ENDPOINT', 'minio:9000')
-        self.minio_key = os.getenv('MINIO_ACCESS_KEY', 'minio')
-        self.minio_secret = os.getenv('MINIO_SECRET_KEY', 'minio123')
-        self.minio_bucket = os.getenv('MINIO_BUCKET', 'raw-data')
+        self.minio_endpoint = os.getenv('MINIO_ENDPOINT')
+        self.minio_key = os.getenv('MINIO_ACCESS_KEY')
+        self.minio_secret = os.getenv('MINIO_SECRET_KEY')
+        self.minio_bucket = os.getenv('MINIO_BUCKET')
 
         self.s3 = boto3.client(
             's3',
@@ -48,14 +52,12 @@ class FAOSTATIngestor:
 
     def process_and_upload(self):
         for key, url in self.urls.items():
-            print(f"🔽 Baixando {key}...")
             df = self.download_and_extract(url)
             if df is not None:
                 buffer = BytesIO()
                 df.to_parquet(buffer, index=False)
                 buffer.seek(0)
                 filename = f"{key}.parquet"
-                print(f"🚀 Enviando {filename} para MinIO...")
                 self.s3.upload_fileobj(buffer, self.minio_bucket, filename)
                 print(f"✅ Arquivo {filename} enviado.")
             else:

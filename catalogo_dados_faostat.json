@@ -1,0 +1,112 @@
+{
+    "datasets": [
+        {
+            "nome": "Produção Agrícola (Soya Beans)",
+            "fonte": "Production_Crops_Livestock_E_All_Data",
+            "descricao": "Representa produção de soja por país e ano.",
+            "variaveis": [
+                {
+                    "nome": "Area",
+                    "tipo": "Categórica",
+                    "descricao": "País ou região geográfica"
+                },
+                {
+                    "nome": "Year",
+                    "tipo": "Numérica",
+                    "descricao": "Ano da observação"
+                },
+                {
+                    "nome": "Area harvested",
+                    "tipo": "Numérica",
+                    "descricao": "Área colhida de soja (ha)"
+                },
+                {
+                    "nome": "Production",
+                    "tipo": "Numérica",
+                    "descricao": "Produção total de soja (toneladas)"
+                },
+                {
+                    "nome": "Yield",
+                    "tipo": "Numérica",
+                    "descricao": "Produtividade da soja (kg/ha)"
+                }
+            ]
+        },
+        {
+            "nome": "Fertilizantes (N, P, K)",
+            "fonte": "Inputs_FertilizersNutrient_E_All_Data",
+            "descricao": "Indicadores de uso agrícola de nutrientes.",
+            "variaveis": [
+                {
+                    "nome": "Agricultural Use",
+                    "tipo": "Numérica",
+                    "descricao": "Uso total agrícola (toneladas)"
+                },
+                {
+                    "nome": "Use per area of cropland",
+                    "tipo": "Numérica",
+                    "descricao": "Uso por hectare (kg/ha)"
+                },
+                {
+                    "nome": "Use per capita",
+                    "tipo": "Numérica",
+                    "descricao": "Uso per capita (kg/pessoa)"
+                }
+            ]
+        },
+        {
+            "nome": "Temperatura Mensal",
+            "fonte": "Environment_Temperature_change_E_All_Data",
+            "descricao": "Média anual da anomalia de temperatura.",
+            "variaveis": [
+                {
+                    "nome": "Temperature change",
+                    "tipo": "Numérica",
+                    "descricao": "Variação anual de temperatura (°C)"
+                }
+            ]
+        },
+        {
+            "nome": "Crédito Agrícola",
+            "fonte": "Investment_CreditAgriculture_E_All_Data",
+            "descricao": "Crédito agrícola em dólares constantes.",
+            "variaveis": [
+                {
+                    "nome": "Investment_USD",
+                    "tipo": "Numérica",
+                    "descricao": "Investimento em crédito agrícola (milhões US$)"
+                }
+            ]
+        },
+        {
+            "nome": "População Rural",
+            "fonte": "Population_E_All_Data",
+            "descricao": "Estimativa da população rural por país e ano.",
+            "variaveis": [
+                {
+                    "nome": "Rural population",
+                    "tipo": "Numérica",
+                    "descricao": "População rural (milhões)"
+                }
+            ]
+        },
+        {
+            "nome": "Preço do Produtor",
+            "fonte": "Prices_E_All_Data",
+            "descricao": "Preço recebido pelo produtor por tonelada de soja.",
+            "variaveis": [
+                {
+                    "nome": "Producer Price (USD/tonne)",
+                    "tipo": "Numérica",
+                    "descricao": "Preço de produtor (US$/tonelada)"
+                }
+            ]
+        }
+    ],
+    "observacoes": [
+        "Todas as tabelas têm como chaves principais as colunas 'Area' e 'Year'.",
+        "Indicadores foram padronizados e normalizados para possibilitar integração entre fontes.",
+        "As variáveis podem ser utilizadas para análise preditiva da produção de soja, com modelos baseados em aprendizado de máquina.",
+        "Agregações por média foram realizadas quando havia dados mensais (temperatura)."
+    ]
+}

@@ -2,5 +2,9 @@ pandas
 scikit-learn
 psycopg2-binary
 boto3
-
-
+sqlalchemy
+matplotlib
+seaborn
+scikit-learn
+pycaret
+python-dotenv

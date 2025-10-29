@@ -2,9 +2,9 @@
 -- e suas respectivas características, como área cultivada, ano, produção, uso per capita,
 -- uso por área de terras cultivadas, uso agrícola, mudança de temperatura, investimento em
 -- dólares, população rural e preço do produtor. 
-DROP TABLE IF EXISTS features_soja;
+DROP TABLE IF EXISTS soya_features;
 
-CREATE TABLE IF NOT EXISTS features_soja (
+CREATE TABLE IF NOT EXISTS soya_features (
     id SERIAL PRIMARY KEY,
     area CHARACTER VARYING,
     year CHARACTER VARYING,

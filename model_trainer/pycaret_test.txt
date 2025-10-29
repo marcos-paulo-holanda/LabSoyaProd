@@ -1,0 +1,60 @@
+                  Description             Value
+                       Target        production
+                  Target type        Regression
+          Original data shape       (10108, 14)
+       Transformed data shape       (10108, 21)
+  Transformed train set shape        (8086, 21)
+   Transformed test set shape        (2022, 21)
+             Numeric features                10
+                Date features                 1
+         Categorical features                 2
+     Rows with missing values             28.6%
+                   Preprocess              True
+              Imputation type            simple
+           Numeric imputation              mean
+       Categorical imputation              mode
+     Maximum one-hot encoding                25
+              Encoding method              None
+     Remove multicollinearity              True
+  Multicollinearity threshold               0.9
+               Fold Generator             KFold
+                  Fold Number                10
+                     CPU Jobs                -1
+                      Use GPU              True
+               Log Experiment             False
+              Experiment Name  reg-default-name
+                          USI              cc84
+| [LightGBM] [Warning] There are no meaningful features which satisfy the provided configuration. Decreasing Dataset parameters min_data_in_bin or min_data_in_leaf and re-constructing Dataset might resolve this warning.
+| [LightGBM] [Info] This is the GPU trainer!!
+| [LightGBM] [Info] Total Bins 0
+| [LightGBM] [Info] Number of data points in the train set: 2, number of used features: 0
+| [LightGBM] [Warning] There are no meaningful features which satisfy the provided configuration. Decreasing Dataset parameters min_data_in_bin or min_data_in_leaf and re-constructing Dataset might resolve this warning.
+| [LightGBM] [Warning] Using sparse features with CUDA is currently not supported.
+| [LightGBM] [Warning] There are no meaningful features which satisfy the provided configuration. Decreasing Dataset parameters min_data_in_bin or min_data_in_leaf and re-constructing Dataset might resolve this warning.
+| [LightGBM] [Info] This is the GPU trainer!!
+| [LightGBM] [Info] Total Bins 0
+| [LightGBM] [Info] Number of data points in the train set: 2, number of used features: 0
+| [LightGBM] [Warning] There are no meaningful features which satisfy the provided configuration. Decreasing Dataset parameters min_data_in_bin or min_data_in_leaf and re-constructing Dataset might resolve this warning.
+| [LightGBM] [Warning] Using sparse features with CUDA is currently not supported.
+| 🤖 Comparando modelos...
+|                                     Model           MAE           MSE          RMSE      R2   RMSLE      MAPE  TT (Sec)
+| knn                 K Neighbors Regressor  2.312066e+03  9.906783e+08  2.453298e+04  1.0000  0.1287    0.0340     0.152
+| et                  Extra Trees Regressor  5.663900e+00  1.431753e+05  1.439071e+02  1.0000  0.0000    0.0000     0.573
+| dt                Decision Tree Regressor  0.000000e+00  0.000000e+00  0.000000e+00  1.0000  0.0000    0.0000     0.166
+| lightgbm  Light Gradient Boosting Machine  3.654631e+04  2.789067e+09  5.259669e+04  1.0000  0.3424    0.1905     0.377
+| rf                Random Forest Regressor  1.727490e+01  5.817886e+05  2.832360e+02  1.0000  0.0001    0.0000     0.857
+| gbr           Gradient Boosting Regressor  3.754925e+05  3.118740e+11  5.580143e+05  0.9996  1.1400    3.5487     1.179
+| ada                    AdaBoost Regressor  3.921671e+06  1.982269e+13  4.448912e+06  0.9768  2.8160  262.8580     0.683
+| ridge                    Ridge Regression  4.330272e+06  2.977216e+13  5.449388e+06  0.9654  2.5595  180.1201     0.249
+| br                         Bayesian Ridge  4.331757e+06  2.977353e+13  5.449500e+06  0.9654  2.5612  180.2511     0.340
+| llar         Lasso Least Angle Regression  4.328309e+06  2.977118e+13  5.449316e+06  0.9654  2.5558  179.9451     0.266
+| lasso                    Lasso Regression  4.328310e+06  2.977118e+13  5.449316e+06  0.9654  2.5558  179.9450     0.530
+| lr                      Linear Regression  4.328308e+06  2.977117e+13  5.449316e+06  0.9654  2.5558  179.9450     0.260
+| en                            Elastic Net  4.650827e+06  3.668416e+13  6.048679e+06  0.9575  2.6473  194.5098     0.334
+| huber                     Huber Regressor  4.239947e+06  5.710581e+13  7.536438e+06  0.9343  1.9914   44.9270     0.619
+| omp           Orthogonal Matching Pursuit  6.478396e+06  7.009487e+13  8.367413e+06  0.9186  2.8135  264.3456     0.260
+| lar                Least Angle Regression  6.112504e+06  1.064670e+14  8.022893e+06  0.8921  2.6947  304.8282     0.238
+| par          Passive Aggressive Regressor  6.969691e+06  1.814262e+14  1.307192e+07  0.7855  1.8440   26.1051     0.242
+| dummy                     Dummy Regressor  2.066297e+07  8.691618e+14  2.942492e+07 -0.0020  3.5163  840.3533     0.129
+| ✅ Melhor modelo: KNeighborsRegressor(n_jobs=-1)
+| 📦 Finalizando modelo com todo o conjunto de dados..

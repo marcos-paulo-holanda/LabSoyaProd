@@ -1,0 +1,3 @@
+Para rodar o aplicativo execute o código no PowerShell: .\start.ps1
+No Windows o Docker desktop deve está aberto.
+O painel BI se encontra na pasta 'powerbi' o projeto

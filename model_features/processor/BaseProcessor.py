@@ -1,6 +1,7 @@
 import pandas as pd
 import boto3
 import io
+from datetime import datetime
 from abc import ABC, abstractmethod
 
 class FAODataProcessor(ABC):
@@ -13,7 +14,7 @@ class FAODataProcessor(ABC):
         self.df_pivot = None
 
     def load_from_minio(self):
-        print(f"📥 Lendo {self.key} do MinIO...")
+        """Carrega as tabelas do MinIO."""
         response = self.minio_client.get_object(Bucket=self.bucket, Key=self.key)
         self.df_raw = pd.read_parquet(io.BytesIO(response['Body'].read()))
 
